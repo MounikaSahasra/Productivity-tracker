@@ -1,0 +1,232 @@
+:root {
+  --background: #c3f8f5;
+  --secondarybackground: #bae8e8;
+  --text: #272343;
+  --accent: #ffab03;
+  --highlight: #ff8fab;
+  --glass: rgba(255, 255, 255, 0.1);
+  --blur: 10px;
+  --transition: 0.4s ease;
+  --completed: #7c7c7c;
+}
+
+/* ✅ Dark Mode overrides */
+body.dark-mode {
+  --background: #1a1a2e;
+  --secondarybackground: #16213e;
+  --text: #ffffff;
+  --accent: #00f5d4;
+  --highlight: #9d4edd;
+  --completed: #bbbbbb;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  padding: 2rem;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  backdrop-filter: blur(var(--blur));
+  background-color: var(--glass);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.3);
+  overflow: hidden;
+  transition: background var(--transition);
+}
+
+.stats-container {
+  background: var(--secondarybackground);
+  border: 2px solid var(--highlight);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.details h1 {
+  font-size: 1.8rem;
+  color: var(--text);
+}
+
+#progressBar {
+  background: var(--glass);
+  height: 10px;
+  border-radius: 5px;
+  border: 2px solid var(--accent);
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+#progress {
+  background: var(--accent);
+  height: 100%;
+  width: 0%;
+  transition: width 0.4s ease-in-out;
+}
+
+.stats-numbers {
+  background-color: var(--highlight);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin: 30px 0;
+  padding: 0 20px;
+}
+
+form input[type="text"] {
+  flex: 1;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--secondarybackground);
+  color: var(--text);
+}
+
+form button {
+  background-color: var(--highlight);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-item {
+  background-color: var(--secondarybackground);
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.task.completed p {
+  text-decoration: line-through;
+  color: var(--completed);
+  opacity: 0.8;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icons img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--highlight);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  color: white;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+.remove-animation {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translateY(10px); height: 0; margin: 0; padding: 0; }
+}
+
+/* Confetti */
+#celebration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: hsl(var(--hue), 80%, 60%);
+  border-radius: 50%;
+  animation: fall 3s linear forwards;
+  opacity: 0.9;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Icon brightness fix for dark mode */
+body.dark-mode .icons img {
+  filter: brightness(0) invert(1); /* white */
+}
+
+body:not(.dark-mode) .icons img {
+  filter: none;
+}

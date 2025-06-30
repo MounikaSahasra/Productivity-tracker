@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>To-Do List</title>
+</head>
+
+<body>
+<button id="themeToggle" style="position: absolute; top: 20px; right: 20px;">
+  <i id="themeIcon" class="fa-solid fa-moon"></i>
+</button>
+
+   <div class="container">
+    <div class="stats-container">
+     <div class="details">
+        <h1>To do App</h1>
+        <p>Keep it up !!</p>
+         <div id="progressBar">
+          <div id="progress"></div>
+         </div>
+     </div>
+         <div class="stats-numbers">
+                <p id="numbers">2 / 3</p>
+         </div>
+    </div>
+    <form action="">
+        <input type="text" id="taskInput" placeholder="Write your task..">
+        <button id="newTask" type="submit">+</button>
+    </form>
+      <ul class="task-list" id="task-list"> </ul>                                    
+    </div>
+    <div id="celebration"></div>
+
+    <script src="script.js"></script>
+    
+
+</body>
+
+</html>
