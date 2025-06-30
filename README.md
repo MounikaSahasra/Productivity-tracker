@@ -23,3 +23,8 @@ Built with **HTML**, **CSS**, and **JavaScript**, featuring **dark mode**, local
 1. Clone the repo  
    ```bash
    git clone https://github.com/MounikaSahasra/Productivity-tracker.git
+
+
+🤍 Author
+Mounika B – @MounikaSahasra
+
